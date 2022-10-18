@@ -4,7 +4,7 @@ const Todos = props => {
   return (
     <ul>
         {props.todos.map(todo => {
-            return <Todo title={todo.title} key={todo.id} />
+            return <Todo title={todo.title} key={todo.id} id={todo.id} delete={props.delete} edit={props.edit} />
         })}
     </ul>
   )
