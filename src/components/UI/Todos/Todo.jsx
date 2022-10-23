@@ -19,8 +19,8 @@ const Todo = props => {
   }
 
   return (
-    <li onClick={checkHandler} className={`${classes.todo} ${checked && classes.checked}`}>
-      {props.title}
+    <li>
+      <p onClick={checkHandler} className={`${classes.todo} ${checked && classes.checked}`}>{props.title}</p>
       <button onClick={editTodoHandler}>✏️</button>
       <button onClick={deleteTodoHandler}>❌</button>
     </li>
