@@ -26,10 +26,12 @@ const Todo = props => {
   }
 
   return (
-    <li>
+    <li className={classes.todo}>
       <p onClick={checkHandler} className={`${classes.todo} ${checked && classes.checked}`}>{props.title}</p>
-      <button onClick={() => editTodoHandler()}>✏️</button>
-      <button onClick={deleteTodoHandler}>❌</button>
+      <div className={classes.controls}>
+        <button onClick={() => editTodoHandler()}>✏️</button>
+        <button onClick={deleteTodoHandler}>❌</button>
+      </div>
       {editing && createPortal(<Backdrop />, document.getElementById('backdrop'))}
       {editing && createPortal(<TodoEdit editTodoHandler={editTodoHandler} />, document.getElementById('overlay'))}
     </li>

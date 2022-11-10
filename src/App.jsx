@@ -5,6 +5,7 @@ import Todos from "./components/UI/Todos/Todos"
 
 function App() {
   const [todos, setTodos] = useState([])
+  const [completed, setCompleted] = useState([])
 
   const deleteTodoHandler = id => {
     setTodos(prevState => prevState.filter(todo => todo.id !== id))

@@ -1,7 +1,35 @@
 .todo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 25rem;
+    margin: 5px 0;
+}
+
+.todo p {
+    cursor: pointer;
+    word-break: break-all;
+    font-size: 36px;
+}
+
+.controls {
+    display: flex;
+}
+
+.controls button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 24px;
     cursor: pointer;
 }
 
 .checked {
     text-decoration: line-through;
+}
+
+@media screen and (min-width: 768px) {
+    .todo {
+        max-width: 10rm;
+    }
 }
