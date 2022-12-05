@@ -1,5 +1,7 @@
+import { useContext } from 'react'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import todosContext from '../../../context/todosContext'
 
 import Backdrop from '../Overlay/Backdrop'
 
@@ -10,8 +12,10 @@ const Todo = (props) => {
 	const [checked, setChecked] = useState(false)
 	const [editing, setEditing] = useState(false)
 
+	const ctx = useContext(todosContext)
+
 	const deleteTodoHandler = () => {
-		props.delete(props.id)
+		ctx.deleteTodoHandler(props.id)
 	}
 
 	const editTodoHandler = (text) => {
@@ -20,8 +24,8 @@ const Todo = (props) => {
 				return !prevState
 			})
 
-		props.edit(props.id, text)
-		localStorage.setItem('items', JSON.stringify(props.todos))
+		ctx.editTodoHandler(props.id, text)
+		localStorage.setItem('tasks', JSON.stringify(ctx.todosCtx))
 		setEditing(false)
 	}
 

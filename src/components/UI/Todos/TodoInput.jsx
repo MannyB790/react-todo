@@ -1,35 +1,17 @@
-import { useState } from 'react'
+import { useContext } from 'react'
+import todosContext from '../../../context/todosContext'
 
 import classes from './TodoInput.module.css'
 
-const TodoInput = (props) => {
-	const [inputText, setInputText] = useState('')
-
-	const addTodoHandler = (e) => {
-		e.preventDefault()
-
-		if (!inputText) return alert('Input field must be filled!')
-
-		const id = Math.random()
-
-		props.addTodo((prevState) => {
-			return [
-				...prevState,
-				{
-					id: id,
-					title: inputText,
-				},
-			]
-		})
-		setInputText('')
-	}
+const TodoInput = () => {
+	const ctx = useContext(todosContext)
 
 	return (
-		<form onSubmit={addTodoHandler} className={classes.Input}>
+		<form onSubmit={ctx.addTodoHandler} className={classes.Input}>
 			<input
 				type="text"
-				value={inputText}
-				onChange={(e) => setInputText(e.target.value)}
+				value={ctx.inputText}
+				onChange={(e) => ctx.inputTextHandler(e.target.value)}
 				required
 			/>
 			<button type="submit">Add</button>

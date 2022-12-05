@@ -1,21 +1,16 @@
+import { useContext } from 'react'
+import todosContext from '../../../context/todosContext'
 import Todo from './Todo'
 
 import classes from './Todos.module.css'
 
-const Todos = (props) => {
+const Todos = () => {
+	const ctx = useContext(todosContext)
+
 	return (
 		<ul className={classes.Todos}>
-			{props.todos.map((todo) => {
-				return (
-					<Todo
-						title={todo.title}
-						key={todo.id}
-						id={todo.id}
-						todos={props.todos}
-						delete={props.delete}
-						edit={props.edit}
-					/>
-				)
+			{ctx.todosCtx.map((todo) => {
+				return <Todo title={todo.title} key={todo.id} id={todo.id} />
 			})}
 		</ul>
 	)
